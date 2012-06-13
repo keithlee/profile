@@ -43,7 +43,7 @@ def account(request):
         form = UserProfileForm(request.POST, request.FILES, instance=user.profile)
         slug = request.POST['slug']
         if User.objects.filter(userprofile__slug=slug).count()> 0:
-            messages.add_message(request, messages.ERROR,"The specified slug has been taken")
+            messages.add_message(request, messages.ERROR,"The input slug has already been taken")
             return render(request, 'profiles/account.html')
         if form.is_valid():
             form.save()
