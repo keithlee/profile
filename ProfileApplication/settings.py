@@ -119,7 +119,7 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     # "/Users/keithlee/Desktop/Projects/PythonProjects/ProfileApplication/TrueProfileApplication/templates"
     # os.path.join(SITE_ROOT, 'templates')
-   (os.path.join(os.path.dirname(__file__), 'templates'),)
+   os.path.join(os.path.dirname(__file__), 'templates')
 
 )
 
