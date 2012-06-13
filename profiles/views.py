@@ -57,8 +57,6 @@ def account(request):
     return render_to_response('profiles/account.html', { 'form' : form}, context_instance=RequestContext(request))
 
 def profile(request, slug):
-    if not request.user.is_authenticated():
-        return HttpResponseRedirect('/')
     user = User.objects.get(userprofile__slug=slug)
 #    user = User.objects.get(pk=request.user.id)
     return render_to_response('profiles/profilePage.html', {'user': user})
