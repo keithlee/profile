@@ -4,7 +4,8 @@ import os.path
 import dj_database_url
 DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
 
-DEBUG = True
+#DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
