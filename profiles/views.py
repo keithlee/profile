@@ -67,7 +67,7 @@ def profile(request, slug):
     user = User.objects.get(userprofile__slug=slug)
     print user
 #    user = User.objects.get(pk=request.user.id)
-    return render_to_response('profiles/profilepage.html', {'user': user})
+    return render_to_response('profiles/profilePage.html', {'user': user})
     
 
 def logoutUser(request):
