@@ -31,7 +31,7 @@ def register(request):
             return render(request, 'registration/register.html')
         else:
             User.objects.create_user(username, username, password1)
-            return HttpResponseRedirect('/account/')
+            return HttpResponseRedirect('account/')
     return render_to_response('registration/register.html', context_instance=RequestContext(request))
 
 def account(request): 
@@ -50,7 +50,7 @@ def account(request):
         if form.is_valid():
             form.save()
             print 'third'
-            return HttpResponseRedirect("/"+request.POST['slug'])
+            return HttpResponseRedirect(request.POST['slug'])
         else:
             return render(request, 'profiles/account.html')
     else:
