@@ -39,33 +39,27 @@ def account(request):
         return HttpResponseRedirect('/')
     user = User.objects.get(pk=request.user.id)
 
-    print 'first'
     if request.method == 'POST':
         form = UserProfileForm(request.POST, request.FILES, instance=user.profile)
-        print 'second'
         slug = request.POST['slug']
         if User.objects.filter(userprofile__slug=slug).count()> 0:
             messages.add_message(request, messages.ERROR,"The slug",slug,"has been taken")
             return render(request, 'profiles/account.html')
         if form.is_valid():
             form.save()
-            print 'third'
             return HttpResponseRedirect("/"+request.POST['slug'])
         else:
             return render(request, 'profiles/account.html')
     else:
-        print 'fourth'
 #        form = UserProfileForm(request.POST, request.FILES, instance = user.profile)
         form = UserProfileForm(request.POST, request.FILES, instance = user.profile)
 #        return render_to_response('profiles/home.html', { 'form' : form}, context_instance=RequestContext(request))
     return render_to_response('profiles/account.html', { 'form' : form}, context_instance=RequestContext(request))
 
 def profile(request, slug):
-    print 'slug:',slug
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/')
     user = User.objects.get(userprofile__slug=slug)
-    print user
 #    user = User.objects.get(pk=request.user.id)
     return render_to_response('profiles/profilePage.html', {'user': user})
     
