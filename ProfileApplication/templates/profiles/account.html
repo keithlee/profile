@@ -1,0 +1,38 @@
+<html>
+<body>
+
+<title>Profile Editor</title>
+{% block content %}
+{% if messages %}
+	{% for message in messages %}
+		{{ message }}
+	{% endfor %}
+{% endif %}
+  <h1>Profile Editor</h1>
+      <form enctype="multipart/form-data" method="post" action="/account/">{% csrf_token %}
+		<table>
+			<tr>
+				<td><label for="profilePicture">Profile Picture</label></td>
+				<td><input type="file" name="profilePicture" id="profilePicture" required="required"></td>
+			</tr>
+			<tr>
+				<td><label for="first_name">First Name</label></td>
+				<td><input type="text" name="firstName" id="firstName"required="required"></td>
+			</tr>
+			<tr>
+				<td><label for="last_name">Last Name</label></td>
+				<td><input type="text" name="lastName" id="lastName"required="required"></td>
+			</tr>
+			<tr>
+				<td><label for="slug">Slug</label></td>
+				<td><input type="text" name="slug" id="slug"required="required" pattern="^[a-zA-Z0-9-_\.]{1,50}$"></td>
+			</tr>
+		</table>{%csrf_token%}
+		<input type="submit" value="Update Profile" />
+  </form>{% endblock %}
+  
+  <button onclick="window.location='/account/logout'"> Logout</button>
+  
+  
+</body>
+</html>

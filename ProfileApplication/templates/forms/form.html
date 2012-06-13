@@ -1,0 +1,22 @@
+      <form enctype="multipart/form-data" method="post" action="/register/">{% csrf_token %}
+		<table>
+			<tr>
+				<td><label for="profilePicture">Profile Picture</label></td>
+				<td><input type="file" name="profilePicture" id="profilePicture" required="required"></td>
+			</tr>
+			<tr>
+				<td><label for="firstName"></label></td>
+				<td><input type="text" name="firstName" id="first_name"required="required"></td>
+			</tr>
+			<tr>
+				<td><label for="last_name">Password</label></td>
+				<td><input type="text" name="last_name" id="last_name"required="required"></td>
+			</tr>
+			<tr>
+				<td><label for="slug">Slug</label></td>
+				<td><input type="text" name="slug" id="slug"required="required"></td>
+			</tr>
+		</table>{%csrf_token%}
+		<input type="submit" value="Update Profile" />
+		<input type="hidden" name="next" value="/home/" />
+  </form>
